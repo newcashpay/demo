@@ -1,0 +1,23 @@
+package com.jxchain.newpay.web.sandbox.config;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
+import lombok.Data;
+
+@Data
+@Configuration
+@ConfigurationProperties(prefix = "app.web-sandbox")
+public class AppConfig 
+{
+//    priKey(PKCS#8)=30818d020100301006072a8648ce3d020106052b8104000a04763074020101042005d1c0be0e25f7b8632a71ee4dcd5dce29d5efb7edcf8dd31f28ce65e7e3d929a00706052b8104000aa14403420004cdb4c08841f0f4768c0942c2edcf9e51f090cf6bd63a9a81a27fac0a83744fcce0f84e62903fcb7c2ff2094f2dc57b4d78f5fe424e82149bf090f203e7e84b79
+//            pubKey(X.509)=3056301006072a8648ce3d020106052b8104000a03420004cdb4c08841f0f4768c0942c2edcf9e51f090cf6bd63a9a81a27fac0a83744fcce0f84e62903fcb7c2ff2094f2dc57b4d78f5fe424e82149bf090f203e7e84b79
+    private String privateKey = "30818d020100301006072a8648ce3d020106052b8104000a04763074020101042005d1c0be0e25f7b8632a71ee4dcd5dce29d5efb7edcf8dd31f28ce65e7e3d929a00706052b8104000aa14403420004cdb4c08841f0f4768c0942c2edcf9e51f090cf6bd63a9a81a27fac0a83744fcce0f84e62903fcb7c2ff2094f2dc57b4d78f5fe424e82149bf090f203e7e84b79";
+    private String pubKey = "3056301006072a8648ce3d020106052b8104000a03420004cdb4c08841f0f4768c0942c2edcf9e51f090cf6bd63a9a81a27fac0a83744fcce0f84e62903fcb7c2ff2094f2dc57b4d78f5fe424e82149bf090f203e7e84b79";
+    
+
+    private String thisAppId;
+    private String apiHost;
+    private String apiHostPubKey;
+    private String webHost;
+}

@@ -1,0 +1,43 @@
+server:
+  port: 8356
+#  error:
+#    whitelabel:
+#      enabled: false
+
+spring:
+  application:
+    name: newpay-web-sandbox
+  profiles:
+    active: online
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+    deserialization:
+      use-big-decimal-for-floats: true
+  boot:
+    admin:
+      client:
+        url:
+        - http://spring-admin-host:8102
+        username: ops
+        password: pwd
+        instance:
+          prefer-ip: true
+  thymeleaf:
+    prefix: classpath:/views/
+    suffix: .html
+    encoding: UTF-8
+    content-type: text/html
+    cache: true
+    
+logging:
+  config: classpath:logback-spring.xml
+   
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true

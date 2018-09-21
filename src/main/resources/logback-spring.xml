@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true"
+			   scanPeriod="30 seconds">
+	<property name="serviceName" value="web-sandbox" />
+	<property name="logPath"
+			  value="${user.home}/logs/newpay_${serviceName}" />
+	<!-- 控制台输出 -->
+	<appender name="STDOUT"
+			  class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level %logger{0} %msg%n</pattern>
+		</encoder>
+	</appender>
+	<!-- 按照每天生成日志文件 -->
+	<appender name="FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logPath}/service.log</file>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/service.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{10} %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="ERROR"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logPath}/service-error.log</file>
+		<rollingPolicy
+				class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${logPath}/service-error.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{10} %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<!-- 系统日志和业务日志都保存到文件中 -->
+	<logger name="org.springframework" level="INFO" />
+	<logger name="ch.qos.logback" level="INFO" />
+
+	<springProfile name="dev">
+		<!-- 错误日志 -->
+		<logger name="error" level="ERROR">
+			<appender-ref ref="ERROR" />
+		</logger>
+		<!-- 业务日志打印到控制台下 -->
+		<logger name="com.jxchain" level="DEBUG" additivity="false">
+			<!-- 生产环境不需要在控制台下打印 -->
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="FILE" />
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	<springProfile name="test">
+		<!-- 错误日志 -->
+		<logger name="error" level="ERROR">
+			<appender-ref ref="ERROR" />
+		</logger>
+		<logger name="com.jxchain" level="DEBUG" additivity="false">
+			<appender-ref ref="FILE" />
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	<springProfile name="pre">
+		<!-- 错误日志 -->
+		<logger name="error" level="ERROR">
+			<appender-ref ref="ERROR" />
+		</logger>
+		<logger name="com.jxchain" level="WARN" additivity="false">
+			<appender-ref ref="FILE" />
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+	<springProfile name="online">
+		<!-- 错误日志 -->
+		<logger name="error" level="ERROR">
+			<appender-ref ref="ERROR" />
+		</logger>
+		<logger name="com.jxchain" level="DEBUG" additivity="false">
+			<appender-ref ref="FILE" />
+		</logger>
+		<root level="INFO">
+			<appender-ref ref="FILE" />
+		</root>
+	</springProfile>
+</configuration>

@@ -1,0 +1,7 @@
+app:
+  web-sandbox: 
+    thisAppId: 24ef317e-6ec5-487a-9421-8345d62bd9de
+    apiHost: https://payapi.newcash.io/open-api
+    apiHostPubKey: 3056301006072a8648ce3d020106052b8104000a0342000494ed90bdb716cb201dd638689f29dafef62bbcac73cb70397b917ac007e5ecde0c0075f961f0261c9c5b3a747a82f122df4558dcc0442e4e158194bf82ca08c2
+    webHost: https://pay.newcash.io/web-invoice
+    

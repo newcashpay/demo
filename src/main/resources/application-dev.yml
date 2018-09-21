@@ -1,0 +1,11 @@
+spring:
+  thymeleaf:
+    cache: false
+    
+app:
+  web-sandbox: 
+    thisAppId: 24ef317e-6ec5-487a-9421-8345d62bd9de
+    apiHost: http://localhost:8353
+    apiHostPubKey: 3056301006072a8648ce3d020106052b8104000a03420004bab7f810a5eeddbaf5f60dd11fd2e64366ab771a6de515413431be3e43d83f4e52969b62dac828a261bafef8aa1daadc04712b9e874985f2409644881ef84ef3
+    webHost: http://localhost:8353
+    
