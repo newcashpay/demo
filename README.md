@@ -335,6 +335,10 @@ public final class HexUtils {
 
 * demo测试链接：<http://47.96.123.113:8356/shop/list>
 
+* demo本地环境：mac/linux
+
+* demo运行命令：sh appctrl.sh start dev|test|online / sh appctrl.sh stop dev|test|online
+
 ## 联系我们
 
 * e-mail: <contact@newcash.io>
